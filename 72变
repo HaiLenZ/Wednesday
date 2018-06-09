@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width:100%;
+				height: 400px;
+				background:purple;
+				border: #DAA520 solid 1px;
+			}
+			#content{
+				font-size: 20px;
+				color: white;
+			}
+		</style>
+		<script>
+			onload = function(){
+				var content = document.getElementById('content');
+				var box = document.getElementById('box');
+				var step = 5;
+				var fontSize = 20;
+				var changeCount = -1;
+				//定时器，每隔一段时间执行一次
+				setInterval(function(){
+					changeCount++;
+					changeCount %=12;
+					//每12次一个循环，字体大小等均放大6次和缩小6次
+					if(changeCount < 6){
+						console.log('放大');
+						fontSize +=step;
+					}else{
+						console.log('缩小');
+						fontSize -=step;
+					}
+					content.style.fontSize = fontSize + 'px';
+					//颜色也跟着随便变化
+					var red = Math.ceil(Math.random()*255);
+					var green = Math.ceil(Math.random()*255);
+					var blue = Math.ceil(Math.random()*255);
+					box.style.background = 'rgba('+red+','+green+','+blue+',0.8)'
+				},300)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box">
+			<p id="content">
+				你变化莫测，捉摸不透，666！
+			</p>
+		</div>
+	</body>
+</html>
