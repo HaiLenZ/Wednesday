@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#img{
+				position: fixed;
+				width:100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+			}
+			#content{
+				font-size: 34px;
+				font-weight: 700;
+				color: red;
+				width: 100%;
+				height: 70px;
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				text-align: center;
+				margin: auto;
+				display: none;
+				text-shadow: 5px 5px 5px orange,9px 9px 3px green;
+			}
+			.gif{
+				position: fixed;
+				z-index: 99;
+			}
+			.gif .gif_lef{
+				position: fixed;
+				left: 10%;
+				top: 10%;
+			}
+			.gif .gif_right{
+				position: fixed
+				right: 10%;
+				top: 9%;
+				/*z-index: 999;*/
+				
+			}
+		</style>
+		<script>
+			onload = function(){
+				var yourname = prompt('请输入你的名字：');
+				var name = document.getElementById('name');
+				name.innerHTML = yourname;
+				var content = document.getElementById('content');
+				content.style.display = 'block';
+				var step = 5;
+				var fontSize = 20;
+				var changeCount = -1;
+				setInterval(function(){
+					changeCount++;
+					changeCount %= 10;
+					if(changeCount < 5){
+//						console.log("放大");
+						fontSize += step;
+					}
+					else{
+//						console.log("缩小")
+						fontSize -= step;
+					}
+					//style属性中的样式设置，没有“-”，写法跟css中相同
+					//有“-”，写成驼峰式
+					content.style.fontSize = fontSize + "px";
+//				setInterval(function(){
+					var ig = document.getElementById('img')
+					var num = Math.ceil(Math.random()*70)
+					b = ig.src = 'img/ ('+num+').jpg';
+//					content.style.marginLeft = 0;
+					
+				},2000)
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main" class="bei_img">
+			<img  id="img" src="img/ (1).gif" />
+			<p id="content">
+				<span>曾海林祝</span>
+				<span id="name" style="color: #800080;"></span>
+				<span>端午节快乐</span>
+			</p>
+			<div class="gif">
+			<img class="gif_lef" src="img/timg.gif" />
+			<img class="gif_right" src="img/timg (1).gif" />
+			</div>
+		</div>
+	</body>
+</html>
